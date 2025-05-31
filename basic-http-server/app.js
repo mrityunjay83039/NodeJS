@@ -1,10 +1,15 @@
 const http = require("http");
 
+const {readFileSync} = require('fs');
+
+const file = readFileSync("./index.html"); // get index.html file using fs module
+
+
 const server = http.createServer((req, res) => {
   const url = req.url;
   if (url === "/") {
     res.writeHead(200, { "content-type": "text/html" }); // status code and header
-    res.write("<h1>Bsic app using http module.</h1>"); // write a response to the client
+    res.write(file); // write a response to the client
     res.end(); // this indicates the end of the response
   } else if (url === "/about") {
     res.writeHead(200, { "content-type": "text/plain" });
