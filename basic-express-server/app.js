@@ -14,9 +14,13 @@ const express = require('express');
 
 
 const app = express();
+const path = require('path');
+
+
+app.use(express.static("./public"))
 
 app.get("/",(req, res)=>{
-    res.send("<h1> First basic app from express </h1>")
+    res.sendFile(path.resolve(__dirname,"./index.html"));
 })
 
 app.get("/about", (req, res)=>{
